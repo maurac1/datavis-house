@@ -14,7 +14,7 @@ void setup() {
   // The background image must be the same size as the parameters
   // into the size() method. In this program, the size of the image
   // is 640 x 360 pixels.
-  bg = loadImage("../assets/floorplan.jpg");
+  bg = loadImage("floorplan.jpg");
 }
 
 void draw() {
