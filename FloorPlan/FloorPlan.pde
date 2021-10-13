@@ -18,14 +18,18 @@ void setup() {
   bg = loadImage("floorplan.jpg");
   
   // loading csv data and printing info to console
-  table = loadTable("test.csv", "header");
+  table = loadTable("filteredDataForAlpha.csv", "header");
   println(table.getRowCount() + " total rows in table");
-  
+  int i=0;
   for (TableRow row : table.rows()) {
-   int id = row.getInt("id");
-   String species = row.getString("species");
-   String name = row.getString("name");
-   println(name + " (" + species + ") has an ID of" + id);
+   int DOEID = row.getInt("DOEID");
+   String REGIONC = row.getString("REGIONC");
+   String KWH = row.getString("KWH");
+   println("id:" + " (" + DOEID + ") has an KWH of" + KWH+ "and is loacated in region"+REGIONC);
+   i+=1;
+   if(i==5){
+     break;
+   }
   }
   
   // font creation
@@ -38,11 +42,35 @@ void draw() {
   textFont(f, 16);
   fill(0);
   int y = 100;
+  int total1=0,total2=0,total3=0,total4=0;
+  int count1=0,count2=0,count3=0,count4=0;
   for (TableRow row : table.rows()) {
-   int id = row.getInt("id");
-   String species = row.getString("species");
-   String name = row.getString("name");
+   //int DOEID = row.getInt("DOEID");
+   int REGIONC = row.getInt("REGIONC");
+   int KWH = row.getInt("KWH");
+  switch(REGIONC) {
+    case 1: 
+      total1+=KWH;
+      count1+=1;
+      break;
+    case 2: 
+      total2+=KWH;
+      count2+=1;
+      break;
+    case 3: 
+      total3+=KWH;
+      count3+=1;
+      break;
+    case 4: 
+      total4+=KWH;
+      count4+=1;
+      break;
+}
    y = y + 20;
-   text((name + " (" + species + ") has an ID of" + id), 200, y);
   }
+  textSize(20);
+  text(("Region 1's KWH average = "+total1/count1+
+   "\n"+"Region 2's KWH average = "+total2/count2+
+   "\n"+"Region 3's KWH average = "+total3/count3+
+   "\n"+"Region 4's KWH average = "+total4/count4+"\n"), 250, 300);
 }
