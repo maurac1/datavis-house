@@ -42,13 +42,13 @@ void draw() {
   textFont(f, 16);
   fill(0);
   int y = 100;
-  int total1=0,total2=0,total3=0,total4=0;
-  int count1=0,count2=0,count3=0,count4=0;
+  //int total1=0,total2=0,total3=0,total4=0;
+  //int count1=0,count2=0,count3=0,count4=0;
   for (TableRow row : table.rows()) {
-   //int DOEID = row.getInt("DOEID");
+   int DOEID = row.getInt("DOEID");
    int REGIONC = row.getInt("REGIONC");
    int KWH = row.getInt("KWH");
-  switch(REGIONC) {
+  /*switch(REGIONC) {
     case 1: 
       total1+=KWH;
       count1+=1;
@@ -65,12 +65,13 @@ void draw() {
       total4+=KWH;
       count4+=1;
       break;
-}
-   y = y + 20;
+  }*/
+  y = y + 20;
+  text(("id:" + " " + DOEID + " has an KWH of" + KWH+ " and is loacated in region "+REGIONC), 100, y);
   }
-  textSize(20);
+  /*textSize(20);
   text(("Region 1's KWH average = "+total1/count1+
    "\n"+"Region 2's KWH average = "+total2/count2+
    "\n"+"Region 3's KWH average = "+total3/count3+
-   "\n"+"Region 4's KWH average = "+total4/count4+"\n"), 250, 300);
+   "\n"+"Region 4's KWH average = "+total4/count4+"\n"), 150, 300);*/
 }
