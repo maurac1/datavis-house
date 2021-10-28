@@ -10,11 +10,29 @@ PImage bg;
 Table table;
 PFont f;
 
+class Center{
+  int xpos, ypos;
+  Center(int x, int y){
+    xpos = x;
+    ypos = y;
+  }
+}
+
+Center c_dryer = new Center(80, 605);
+Center c_washer = new Center(86, 554);
+Center c_dish = new Center(481, 336);
+Center c_fridge = new Center(483, 275);
+Center c_stove = new Center(434, 448);
+Center c_tv = new Center(307, 157);
+Center c_light = new Center(490, 82);
+Center c_water_heating = new Center(214, 460);
+Center c_ac = new Center(300, 341);
+Center c_heat = new Center(300, 341);
+
 void setup() {
+  //set the size of the window to match the picture
   size(600, 683);
-  // The background image must be the same size as the parameters
-  // into the size() method. In this program, the size of the image
-  // is 640 x 360 pixels.
+
   bg = loadImage("floorplan.jpg");
   
   // loading csv data and printing info to console
