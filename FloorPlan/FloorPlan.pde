@@ -59,16 +59,16 @@ void setup() {
    centers.get(9).SetAvg(centers.get(9).avg + row.getInt("KWHSPH"));
   }
   int rows = table.getRowCount();
-  centers.get(0).SetAvg(centers.get(0).avg + rows);
-  centers.get(1).SetAvg(centers.get(1).avg + rows);
-  centers.get(2).SetAvg(centers.get(2).avg + rows);
-  centers.get(3).SetAvg(centers.get(3).avg + rows);
-  centers.get(4).SetAvg(centers.get(4).avg + rows);
-  centers.get(5).SetAvg(centers.get(5).avg + rows);
-  centers.get(6).SetAvg(centers.get(6).avg + rows);
-  centers.get(7).SetAvg(centers.get(7).avg + rows);
-  centers.get(8).SetAvg(centers.get(8).avg + rows);
-  centers.get(9).SetAvg(centers.get(9).avg + rows);
+  centers.get(0).SetAvg(centers.get(0).avg / rows);
+  centers.get(1).SetAvg(centers.get(1).avg / rows);
+  centers.get(2).SetAvg(centers.get(2).avg / rows);
+  centers.get(3).SetAvg(centers.get(3).avg / rows);
+  centers.get(4).SetAvg(centers.get(4).avg / rows);
+  centers.get(5).SetAvg(centers.get(5).avg / rows);
+  centers.get(6).SetAvg(centers.get(6).avg / rows);
+  centers.get(7).SetAvg(centers.get(7).avg / rows);
+  centers.get(8).SetAvg(centers.get(8).avg / rows);
+  centers.get(9).SetAvg(centers.get(9).avg / rows);
   
   
   // font creation
