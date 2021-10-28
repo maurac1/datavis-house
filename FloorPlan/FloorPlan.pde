@@ -1,15 +1,17 @@
 /**
- * Background Image. 
- * 
- * This example presents the fastest way to load a background image
- * into Processing. To load an image as the background, it must be
- * the same width and height as the program.
+ * Visualization of energy usage of utilities in a floorplan
  */
 
+// create variables for background image, table of data, and font
 PImage bg;
 Table table;
 PFont f;
 
+/*
+ * Class stores the location of a particular utility on the window
+ * x position, y postion of center 
+ * and average energy use to be displayed
+ */
 class Center{
   int xpos, ypos, avg;
   Center(int x, int y){
@@ -22,6 +24,7 @@ class Center{
   }
 }
 
+// create a list of Center objects
 ArrayList<Center> centers = new ArrayList<Center>();
 
 
@@ -35,6 +38,7 @@ void setup() {
   table = loadTable("filteredDataForAlpha.csv", "header");
   println(table.getRowCount() + " total rows in table");
   
+  // populate the centers with their correct locations on image
   centers.add(new Center(80, 605));
   centers.add(new Center(86, 554));
   centers.add(new Center(481, 336));
@@ -46,6 +50,7 @@ void setup() {
   centers.add(new Center(300, 341));
   centers.add(new Center(300, 341));
   
+  // sum the energy usage for each utility
   for (TableRow row : table.rows()) {
    centers.get(0).SetAvg(centers.get(0).avg + row.getInt("KWHCDR"));
    centers.get(1).SetAvg(centers.get(1).avg + row.getInt("KWHCW"));
@@ -58,6 +63,9 @@ void setup() {
    centers.get(8).SetAvg(centers.get(8).avg + row.getInt("KWHCOL"));
    centers.get(9).SetAvg(centers.get(9).avg + row.getInt("KWHSPH"));
   }
+  
+  // divide each sum by the number of rows in the data table
+  // results in average energy use
   int rows = table.getRowCount();
   centers.get(0).SetAvg(centers.get(0).avg / rows);
   centers.get(1).SetAvg(centers.get(1).avg / rows);
@@ -77,11 +85,16 @@ void setup() {
 }
 
 void draw() {
+  // display background
   background(bg);
+  
+  // select font
   textFont(f, 16);
+  
+  // select fill
   fill(0);
   
-  // place averages in correct places
+  // place averages in correct places on image with units
   for (Center c : centers) {
     text((c.avg + " KWH"), c.xpos, c.ypos);
   }
