@@ -82,38 +82,8 @@ void draw() {
   fill(0);
   
   // place averages in correct places
+  for (Center c : centers) {
+    text((c.avg + " KWH"), c.xpos, c.ypos);
+  }
   
-  
-  //int total1=0,total2=0,total3=0,total4=0;
-  //int count1=0,count2=0,count3=0,count4=0;
-  //for (TableRow row : table.rows()) {
-  // int DOEID = row.getInt("DOEID");
-   //int REGIONC = row.getInt("REGIONC");
-   //int KWH = row.getInt("KWH");
-  /*switch(REGIONC) {
-    case 1: 
-      total1+=KWH;
-      count1+=1;
-      break;
-    case 2: 
-      total2+=KWH;
-      count2+=1;
-      break;
-    case 3: 
-      total3+=KWH;
-      count3+=1;
-      break;
-    case 4: 
-      total4+=KWH;
-      count4+=1;
-      break;
-  }*/
-  //y = y + 20;
-  //text(("id:" + " " + DOEID + " has an KWH of" + KWH+ " and is loacated in region "+REGIONC), 100, y);
-  //}
-  /*textSize(20);
-  text(("Region 1's KWH average = "+total1/count1+
-   "\n"+"Region 2's KWH average = "+total2/count2+
-   "\n"+"Region 3's KWH average = "+total3/count3+
-   "\n"+"Region 4's KWH average = "+total4/count4+"\n"), 150, 300);*/
 }
