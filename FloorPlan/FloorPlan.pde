@@ -155,6 +155,7 @@ void draw() {
     }
     circle(a.xpos, a.ypos, 50);
   }
+  //makes the image with an X to signify where to close the image
   if(showBox==true){
     image(img1,200, 241,width/3, height/3);
     textSize(50);
@@ -164,13 +165,14 @@ void draw() {
   
 }
 void mouseClicked() {
-  print("x",mouseX,"y",mouseY);
+  //prints mouse position print("x",mouseX,"y",mouseY);
     for(Appliance a : appliances){
       if(dist(mouseX,mouseY,a.getX(),a.getY())<25){
         print("Clicked on",a.getName(),"\n");
         showBox=true;
       }
     }
+    //if you click the x it removes the image
     if(dist(mouseX,mouseY,217,262)<20){
       showBox=false;
     }
