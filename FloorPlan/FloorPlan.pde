@@ -3,10 +3,10 @@
  */
 
 // create variables for background image, table of data, and font
-PImage bg;
+PImage bg,img1;
 Table table;
 PFont f;
-
+boolean showBox=false;
 /*
  * Class stores the location of a particular utility on the window
  * x position, y postion of center 
@@ -24,6 +24,10 @@ class Appliance{
   void SetAvg(int a){
     avg = a;
   }
+  String getName(){return name;}
+  int getX(){return xpos;}
+  int getY(){return ypos;}
+  
 }
 
 class Color{
@@ -44,7 +48,7 @@ void setup() {
   size(600, 683);
 
   bg = loadImage("floorplan.jpg");
-  
+  img1 = loadImage("test.JPG");
   // loading csv data and printing info to console
   table = loadTable("filteredDataForAlpha.csv", "header");
   println(table.getRowCount() + " total rows in table");
@@ -102,7 +106,6 @@ void setup() {
   
   // font creation
   f = createFont("Arial", 16, true);
-  
 }
 
 void draw() {
@@ -114,7 +117,7 @@ void draw() {
   
   // select fill
   fill(0);
-  
+
   // color ranges
   Color c1 = new Color(119, 255, 0);
   Color c2 = new Color(246, 255, 0);
@@ -142,7 +145,38 @@ void draw() {
     }else{
       fill(c5.r, c5.g, c5.b, 150); 
     }
+    //checks to see if we are hovering over circle, if we are change the outline
+    if(dist(mouseX,mouseY,a.getX(),a.getY())<25){
+      stroke(255);
+    }
+    else{
+      //reset the outline
+      stroke(0);
+    }
     circle(a.xpos, a.ypos, 50);
+  }
+  if(showBox==true){
+    image(img1,200, 241,width/3, height/3);
+    textSize(50);
+    text("X", 200, 281);
+    //rect(200, 241, 200, 200);
   }
   
 }
+void mouseClicked() {
+  print("x",mouseX,"y",mouseY);
+    for(Appliance a : appliances){
+      if(dist(mouseX,mouseY,a.getX(),a.getY())<25){
+        print("Clicked on",a.getName(),"\n");
+        showBox=true;
+      }
+    }
+    if(dist(mouseX,mouseY,217,262)<20){
+      showBox=false;
+    }
+    /*
+    else if(dist(mouseX,mouseY,80,605)<25){
+      print("Clicked on a circle\n");
+    }
+    */
+  }
