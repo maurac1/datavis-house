@@ -127,6 +127,16 @@ void draw() {
   int c4_range_start = 1200;
   int c5_range_start = 1600;
   
+  //legend
+  fill(c5.r, c5.g, c5.b, 120);
+  circle(12, 12, 20);
+  fill(c1.r, c1.g, c1.b, 120);
+  circle(12, 37, 20);
+  fill(0);
+  textSize(12);
+  textAlign(LEFT);
+  text("= Highest Energy Consumption", 30, 15);
+  text("= Lowest Energy Consumption", 30, 40);
   
   // place averages in correct places on image with units
   for (Appliance a : appliances) {
@@ -140,9 +150,14 @@ void draw() {
     }else if(a.avg < c5_range_start){
       fill(c4.r, c4.g, c4.b, 120); 
     }else{
-      fill(c5.r, c5.g, c5.b, 150); 
+      fill(c5.r, c5.g, c5.b, 120); 
     }
     circle(a.xpos, a.ypos, 50);
+    fill(0,0,0);
+    textAlign(CENTER);
+    textSize(12);
+    text("Heating", 300, 375);
+    text("Cooling", 300, 320);
   }
   
 }
