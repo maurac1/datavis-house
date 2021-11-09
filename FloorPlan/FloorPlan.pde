@@ -164,6 +164,10 @@ void draw() {
       stroke(0);
     }
     circle(a.xpos, a.ypos, 50);
+    fill(0);
+    textAlign(CENTER);
+    text("Heating", 300, 375);
+    text("Cooling", 300, 320);
   }
   //makes the image with an X to signify where to close the image
   if(showBox==true){
