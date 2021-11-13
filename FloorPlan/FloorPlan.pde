@@ -141,7 +141,7 @@ void draw() {
   text("= Highest Energy Consumption", 30, 15);
   text("= Lowest Energy Consumption", 30, 40);
   
-  // place averages in correct places on image with units
+  // set colors according to what range they fall in
   for (Appliance a : appliances) {
     //text((c.avg + " KWH"), c.xpos, c.ypos);
     if(a.avg < c2_range_start){
