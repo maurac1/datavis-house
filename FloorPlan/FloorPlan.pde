@@ -171,10 +171,9 @@ void draw() {
   }
   //makes the image with an X to signify where to close the image
   if(showBox==true){
-    image(img1,200, 241,width/3, height/3);
+    image(img1, 0, 200,600, 371);
     textSize(50);
-    text("X", 200, 281);
-    //rect(200, 241, 200, 200);
+    text("X", 25, 195);
   }
   
 }
@@ -182,17 +181,34 @@ void mouseClicked() {
   //prints mouse position print("x",mouseX,"y",mouseY);
     for(Appliance a : appliances){
       if(dist(mouseX,mouseY,a.getX(),a.getY())<25){
-        print("Clicked on",a.getName(),"\n");
+    
+        if(a.getName() == "KWHSPH"){
+          img1 = loadImage("SpaceHeating_Housing.png");
+        }else if(a.getName() == "KWHCOL"){
+          img1 = loadImage("Cooling_Housing.png");
+        }else if(a.getName() == "KWHWTH"){
+          img1 = loadImage("WaterHeating_Housing.png");
+        }else if(a.getName() == "KWHLGT"){
+          img1 = loadImage("Light_Housing.png");
+        }else if(a.getName() == "KWHTV1"){
+          img1 = loadImage("TV_Housing.png");
+        }else if(a.getName() == "KWHCOK"){
+          img1 = loadImage("Stovetop_Housing.png");
+        }else if(a.getName() == "KWHRFG"){
+          img1 = loadImage("Refrigerator_Housing.png");
+        }else if(a.getName() == "KWHCW"){
+          img1 = loadImage("Washer_Housing.png");
+        }else if(a.getName() == "KWHCDR"){
+          img1 = loadImage("Dryer_Housing.png");
+        }else if(a.getName() == "KWHDWH"){
+          img1 = loadImage("Dishwasher_Housing.png");
+        }
         showBox=true;
       }
     }
     //if you click the x it removes the image
-    if(dist(mouseX,mouseY,217,262)<20){
+    if(dist(mouseX,mouseY,25,195)<20){
       showBox=false;
     }
-    /*
-    else if(dist(mouseX,mouseY,80,605)<25){
-      print("Clicked on a circle\n");
-    }
-    */
+    
   }
